@@ -3,10 +3,9 @@ package fizzbuzz
 object FizzBuzz {
 
   def fizzbuzz(numbers: List[Int]): List[String] = {
-    if (numbers == List(3)) {
-      List("fizz")
-    } else {
-      List("1")
+    numbers match {
+      case 3::_ => List("fizz")
+      case _ => List("1")
     }
   }
 
