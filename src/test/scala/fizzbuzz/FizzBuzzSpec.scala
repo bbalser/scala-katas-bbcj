@@ -24,4 +24,8 @@ class FizzBuzzSpec extends FlatSpec with ShouldMatchers {
     fizzbuzz(List(1,2,3,4)) should be (List("1","2","fizz","4"))
   }
 
+  it should "return List of buzz when given List of 5 " in {
+    fizzbuzz(List(5)) should be (List("buzz"))
+  }
+
 }
