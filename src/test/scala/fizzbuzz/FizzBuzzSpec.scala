@@ -20,4 +20,8 @@ class FizzBuzzSpec extends FlatSpec with ShouldMatchers {
     fizzbuzz(List(1,2)) should be (List("1","2"))
   }
 
+  it should "return List of numbers converting 3 to fizz when given List(1,2,3,4)" in {
+    fizzbuzz(List(1,2,3,4)) should be (List("1","2","fizz","4"))
+  }
+
 }
