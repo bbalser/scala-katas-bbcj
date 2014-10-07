@@ -13,18 +13,20 @@ object FizzBuzz {
     case x => x.toString
   }
 
-  //Not sure I yet understand....these are classes, how are we able to call these as we do above?
   object IsFizz {
-    def unapply(num: Int): Boolean = num % 3 == 0
+    def unapply(num: Int): Boolean = isDivisible(num, 3)
   }
 
   object IsBuzz {
-    def unapply(num: Int): Boolean = num % 5 == 0
+    def unapply(num: Int): Boolean = isDivisible(num, 5)
   }
 
-  //Tried to refactor to use above code...
   object IsFizzBuzz {
-    def unapply(num: Int): Boolean =  (num % 5 == 0 && num % 3 == 0)
+    def unapply(num: Int): Boolean =  isDivisible(num,5) && isDivisible(num,3)
+  }
+
+  private def isDivisible(num: Int, mod: Int): Boolean ={
+          num % mod == 0
   }
 
 }
