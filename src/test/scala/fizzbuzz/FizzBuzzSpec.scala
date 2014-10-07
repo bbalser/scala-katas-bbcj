@@ -40,4 +40,6 @@ class FizzBuzzSpec extends FlatSpec with ShouldMatchers {
     fizzbuzz(List(15)) should be (List("fizzbuzz"))
   }
 
+
+
 }
