@@ -8,9 +8,8 @@ object FizzBuzz {
 
   private def convertNumber(num: Int) : String  = {
     if(num % 3 == 0) "fizz"
-    else if (num == 5) "buzz"
+    else if (num % 5 == 0) "buzz"
     else num.toString
-
   }
 
 }
