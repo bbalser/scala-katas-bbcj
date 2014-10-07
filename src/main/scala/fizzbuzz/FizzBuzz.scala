@@ -6,10 +6,12 @@ object FizzBuzz {
       numbers.map(convertNumber)
   }
 
-  private def convertNumber(num: Int) : String = num match {
-    case 3 => "fizz"
-    case 5 => "buzz"
-    case _ => num.toString
+  private def convertNumber(num: Int) : String  = {
+    if(num % 3 == 0) "fizz"
+    else if (num == 5) "buzz"
+    else num.toString
+
   }
 
 }
+
