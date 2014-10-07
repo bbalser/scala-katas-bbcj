@@ -17,7 +17,7 @@ class FizzBuzzSpec extends FlatSpec with ShouldMatchers {
     fizzbuzz(List(3)) should be (List("fizz"))
   }
   it should "return List of numbers when given List of numbers not divisible by 3 or 5" in {
-    fizzbuzz(List(1,2)) should be (List("1,2"))
+    fizzbuzz(List(1,2)) should be (List("1","2"))
   }
 
 }
