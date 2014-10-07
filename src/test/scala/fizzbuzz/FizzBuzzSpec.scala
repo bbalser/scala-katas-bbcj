@@ -9,13 +9,8 @@ class FizzBuzzSpec extends FlatSpec with ShouldMatchers {
     fizzbuzz(List(1)) should be (List("1"))
   }
 
-  "FizzBuzz" should "return List of fizz when given List of number divisible by 3" in {
+  it should "return List of fizz when given List of number divisible by 3" in {
     fizzbuzz(List(3)) should be (List("fizz"))
-  }
-
-  //Please delete
-  it should "have another example of test" in {
-    1 should be (1)
   }
 
 }
