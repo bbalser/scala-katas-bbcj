@@ -9,7 +9,7 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
     toRoman(1) should be ("I")
   }
 
-  "When converting arabic to roman numerals, it" should "return II for 2" in {
+  it should "return II for 2" in {
     toRoman(2) should be ("II")
   }
 
