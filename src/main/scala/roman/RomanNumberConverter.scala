@@ -1,17 +1,20 @@
 package roman
 
+import scala.annotation.tailrec
+
 object RomanNumberConverter {
 
   def toRoman(arabic: Int): String = {
-    var roman = ""
-    var number = arabic
 
-    if (number >= 5) {
-      roman += "V"
-      number -= 5
+    @tailrec def convertToRoman(remainder: Int, roman: String) : String = {
+      if (remainder >= 5) {
+        convertToRoman(remainder-5,roman + "V")
+      } else {
+        roman + ("I" * remainder)
+      }
     }
 
-    roman + ("I" * number)
+    convertToRoman(arabic, "")
   }
 
 }
