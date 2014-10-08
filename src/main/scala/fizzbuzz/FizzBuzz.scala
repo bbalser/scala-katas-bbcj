@@ -22,7 +22,7 @@ object FizzBuzz {
   }
 
   object IsFizzBuzz {
-    def unapply(num: Int): Boolean =  isDivisible(num,5) && isDivisible(num,3)
+    def unapply(num: Int): Boolean =  isDivisible(num,15)
   }
 
   private def isDivisible(num: Int, mod: Int): Boolean ={
