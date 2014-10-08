@@ -20,4 +20,8 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
     toRoman(6) should be ("VI")
   }
 
+  it should "return X for 10" in {
+    toRoman(10) should be ("X")
+  }
+
 }
