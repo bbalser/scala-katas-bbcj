@@ -2,10 +2,16 @@ package roman
 
 object RomanNumberConverter {
 
-  def toRoman(arabic: Int): String = arabic match  {
-    case 5 => "V"
-    case _ => "I" * arabic
+  def toRoman(arabic: Int): String = {
+    var roman = ""
+    var number = arabic
 
+    if (number >= 5) {
+      roman += "V"
+      number -= 5
+    }
+
+    roman + ("I" * number)
   }
 
 }
