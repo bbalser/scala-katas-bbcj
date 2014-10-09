@@ -7,7 +7,7 @@ object RomanNumberConverter {
   def toRoman(arabic: Int): String = {
 
     @tailrec def convertToRoman(remainder: Int, roman: String) : String = {
-      if (remainder >= 10){
+      if (remainder == 10){
         convertToRoman(remainder-10,roman + "X")
       }
       else if (remainder >= 5) {
