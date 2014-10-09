@@ -36,4 +36,8 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
     toRoman(51) should be ("LI")
   }
 
+  it should "return C for 100" in {
+    toRoman(100) should be ("C")
+  }
+
 }
