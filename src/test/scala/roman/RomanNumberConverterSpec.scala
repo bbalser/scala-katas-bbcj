@@ -24,11 +24,16 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
     toRoman(10) should be ("X")
   }
 
-  it should "return X1 for 11" in {
-    toRoman(11) should be ("X1")
+  it should "return XI for 11" in {
+    toRoman(11) should be ("XI")
   }
+
   it should "return L for 50" in {
     toRoman(50) should be ("L")
+  }
+
+  it should "return LI for 51" in {
+    toRoman(51) should be ("LI")
   }
 
 }
