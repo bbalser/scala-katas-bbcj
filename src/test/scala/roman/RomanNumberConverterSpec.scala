@@ -23,7 +23,9 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
   it should "return VI for 6" in {
     toRoman(6) should be ("VI")
   }
-
+  it should "return IX for 9" in {
+    toRoman(9) should be ("IX")
+  }
   it should "return X for 10" in {
     toRoman(10) should be ("X")
   }
