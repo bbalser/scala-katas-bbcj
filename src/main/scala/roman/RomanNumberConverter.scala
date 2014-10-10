@@ -3,12 +3,12 @@ package roman
 import scala.annotation.tailrec
 
 object RomanNumberConverter {
-  val map = Map[Int, String](50 -> "L", 10 -> "X", 5 -> "V", 1 -> "I")
+  val data = List( (100,"C"), (50, "L"), (10, "X"), (5, "V"), (1, "I"))
 
   def toRoman(arabic: Int): String = {
 
-    map.foldLeft((arabic, "")) { case ((number, romanString), (key, value)) =>
-      (number % key, romanString + (value * (number / key)))
+    data.foldLeft((arabic, "")) { case ((number, buffer), (arabicValue, romanCharacter)) =>
+      (number % arabicValue, buffer + (romanCharacter * (number / arabicValue)))
     }._2
 
   }
