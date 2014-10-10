@@ -2,6 +2,7 @@ package roman
 
 import org.scalatest.{FlatSpec, ShouldMatchers}
 import roman.RomanNumberConverter.toRoman
+import roman.RomanNumberConverter.testFoldLeft
 
 class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
 
@@ -44,6 +45,12 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
 
   it should "return C for 100" in {
     toRoman(100) should be ("C")
+  }
+
+
+
+  it should "return 21 for list(1,2,3,4,5,6)" in {
+    testFoldLeft(0) should be (21)
   }
 
 }
