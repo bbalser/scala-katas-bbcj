@@ -7,26 +7,10 @@ object RomanNumberConverter {
 
   def toRoman(arabic: Int): String = {
 
-    @tailrec def convertToRoman(remainder: Int, roman: String): String = {
+    map.foldLeft((arabic, "")) { case ((number, romanString), (key, value)) =>
+      (number % key, romanString + (value * (number / key)))
+    }._2
 
-      if(remainder > 0){
-        val num = findLargestDivisor(remainder)
-        convertToRoman(remainder - num, roman + map(num))
-      }else {
-        roman
-      }
-    }
-    convertToRoman(arabic, "")
-
-  }
-
-  private def findLargestDivisor(remainder: Int): Int = {
-    map.keySet.foreach { key =>
-        if (remainder >= key) {
-          return key
-        }
-    }
-    return 0
   }
 
 }
