@@ -13,11 +13,8 @@ object RomanNumberConverter {
 
   }
 
-  def toArabic(roman: String): Int = ???
-
-  def testFoldLeft(in: Int): Int = {
-    val list = List(1, 2, 3, 4, 5, 6)
-    list.foldLeft(in)((thisIsInOrTheResultOfThePrevIteration, thisIsAnElementFromTheList) => thisIsInOrTheResultOfThePrevIteration + thisIsAnElementFromTheList)
+  def toArabic(roman: String): Int = {
+    data(6)._1
   }
 
 }
