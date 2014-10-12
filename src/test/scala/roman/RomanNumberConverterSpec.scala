@@ -52,8 +52,14 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
   "When converting roman to arabic, it" should "return 1 for I" in {
     toArabic("I") should be (1)
   }
+
   it should "return 2 for II" in {
     toArabic("II") should be (2)
   }
+
+  it should "return 5 for V" in {
+    toArabic("V") should be (5)
+  }
+
 
 }
