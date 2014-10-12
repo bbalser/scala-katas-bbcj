@@ -14,7 +14,7 @@ object RomanNumberConverter {
   }
 
   def toArabic(roman: String): Int = {
-    data(6)._1 * roman.size
+    roman.size
   }
 
 }
