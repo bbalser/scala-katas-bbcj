@@ -13,15 +13,12 @@ object RomanNumberConverter {
 
   def toArabic(roman: String): Int = {
     var arabicResult = 0
-    roman.foreach{  char =>
-      data.foreach{ case (arabicValue,romanCharacter) =>
-        if(romanCharacter == char.toString){
-          arabicResult += arabicValue
-        }
-      }
-    }
+
+    for (char <- roman ; pair <- data if pair._2 == char.toString)  arabicResult += pair._1
+
     arabicResult
   }
+
 
 }
 

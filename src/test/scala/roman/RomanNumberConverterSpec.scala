@@ -1,7 +1,7 @@
 package roman
 
 import org.scalatest.{FlatSpec, ShouldMatchers}
-import roman.RomanNumberConverter.{toRoman, toArabic}
+import roman.RomanNumberConverter.{toArabic, toRoman}
 
 class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
 
@@ -64,6 +64,8 @@ class RomanNumberConverterSpec extends FlatSpec with ShouldMatchers {
   it should "return 4 for IV" in {
     toArabic("IV") should be (4)
   }
+
+
 
 
 
