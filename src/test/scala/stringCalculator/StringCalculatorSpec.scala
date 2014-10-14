@@ -18,6 +18,9 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
     add("1,1") should be (2)
   }
 
+  it should "handle new lines between number instead of commas" in {
+    add("1\n2,3") should be (6)
+  }
 
 
 }
