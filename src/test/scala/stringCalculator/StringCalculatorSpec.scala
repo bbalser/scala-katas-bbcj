@@ -14,5 +14,10 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
     add("1") should be (1)
   }
 
+  it should "return 2 when given String 1,1" in {
+    add("1,1") should be (2)
+  }
+
+
 
 }
