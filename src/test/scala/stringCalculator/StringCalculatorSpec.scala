@@ -30,5 +30,10 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
     add("//;\n1;2") should be (3)
   }
 
+  it should "throw an exception when given -1' " in {
+    an [IllegalArgumentException] should be thrownBy add("-1")
+
+  }
+
 
 }
