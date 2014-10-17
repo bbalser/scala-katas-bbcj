@@ -26,7 +26,7 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
     add("//;\n1") should be (1)
   }
 
-  it should "return 3 when give custom delimiter String '//;\n1;2" in {
+  it should "return 3 when give custom delimiter String '//;\n1;2' " in {
     add("//;\n1;2") should be (3)
   }
 
