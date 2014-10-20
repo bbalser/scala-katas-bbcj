@@ -34,4 +34,10 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
     an [IllegalArgumentException] should be thrownBy add("-1")
   }
 
+  it should "throw an exception with a nice message when give -1" in {
+    val exception = intercept[IllegalArgumentException] {
+      add("-1")
+    }
+    exception.getMessage should be ("negatives not allowed : -1")
+  }
 }
