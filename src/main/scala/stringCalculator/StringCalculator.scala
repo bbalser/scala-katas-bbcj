@@ -9,14 +9,17 @@ object StringCalculator {
     val delimiter = determineDelimiter(numbers)
 
     val cleanedNumbers = "/".r.replaceAllIn(numbers, "")
-    cleanedNumbers.replace("\n", delimiter).split(delimiter).collect { case x if !x.isEmpty => x.toInt }.sum
+    val numberList = cleanedNumbers.replace("\n", delimiter).split(delimiter).collect { case x if !x.isEmpty => x.toInt}
+
+    numberList.find(_ < 0) match {
+      case Some(x) => throw new IllegalArgumentException()
+      case None => numberList.sum
+    }
   }
 
-  def determineDelimiter(numbers: String): String = {
-    numbers match {
-      case CustomDelimiterRegex(x) => x
-      case _ => ","
-    }
+  def determineDelimiter(numbers: String): String = numbers match {
+    case CustomDelimiterRegex(x) => x
+    case _ => ","
   }
 
 }
