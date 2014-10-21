@@ -12,7 +12,7 @@ object StringCalculator {
     val numberList = cleanedNumbers.replace("\n", delimiter).split(delimiter).collect { case x if !x.isEmpty => x.toInt}
 
     numberList.find(_ < 0) match {
-      case Some(x) => throw new IllegalArgumentException()
+      case Some(x) => throw new IllegalArgumentException("negatives not allowed : -1")
       case None => numberList.sum
     }
   }
