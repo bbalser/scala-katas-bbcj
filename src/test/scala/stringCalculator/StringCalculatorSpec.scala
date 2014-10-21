@@ -47,4 +47,11 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
     }
     exception.getMessage should be ("negatives not allowed : -2")
   }
+
+  it should "throw an exception with all the negative numbers in the message when given multiple negatives" in {
+    val exception = intercept[IllegalArgumentException] {
+      add("-2,-3")
+    }
+    exception.getMessage should be ("negatives not allowed : -2, -3")
+  }
 }
