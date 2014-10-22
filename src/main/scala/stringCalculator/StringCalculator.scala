@@ -11,8 +11,9 @@ object StringCalculator {
     val cleanedNumbers = "/".r.replaceAllIn(numbers, "")
     val numberList = cleanedNumbers.replace("\n", delimiter).split(delimiter).collect { case x if !x.isEmpty => x.toInt}
 
+
     numberList.find(_ < 0) match {
-      case Some(x) => throw new IllegalArgumentException(s"negatives not allowed : ${x}")
+      case Some(x) => throw new IllegalArgumentException(s"negatives not allowed : ${numberList.collect{case x if x < 0 => x}.mkString(", ")}")
       case None => numberList.sum
     }
   }
@@ -21,6 +22,8 @@ object StringCalculator {
     case CustomDelimiterRegex(x) => x
     case _ => ","
   }
+
+
 
 }
 
