@@ -56,6 +56,6 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
   }
 
   it should "ignore numbers larger than 1000" in {
-    add("1001,2")  should be (2)
+    add("2,1000,1001,1002")  should be (1002)
   }
 }
