@@ -55,7 +55,7 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
     exception.getMessage should be ("negatives not allowed : -2, -3")
   }
 
-  it should "ignore numbers larger than 1000" in {
-    add("1001,2")  should be (2)
-  }
+//  it should "ignore numbers larger than 1000" in {
+//    add("1001,2")  should be (2)
+//  }
 }

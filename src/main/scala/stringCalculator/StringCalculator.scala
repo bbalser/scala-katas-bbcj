@@ -9,12 +9,12 @@ object StringCalculator {
     val delimiter = determineDelimiter(numbers)
 
     val cleanedNumbers = "/".r.replaceAllIn(numbers, "")
-    val numberList = cleanedNumbers.replace("\n", delimiter).split(delimiter).collect { case x if !x.isEmpty => x.toInt}
+    val numberList = cleanedNumbers.replace("\n", delimiter).split(delimiter).toList.collect { case x if !x.isEmpty => x.toInt}
 
 
-    numberList.find(_ < 0) match {
-      case Some(x) => throw new IllegalArgumentException(s"negatives not allowed : ${numberList.collect{case x if x < 0 => x}.mkString(", ")}")
-      case None => numberList.sum
+    numberList.filter(_ < 0) match {
+      case Nil => numberList.sum
+      case x => throw new IllegalArgumentException(s"negatives not allowed : ${x.mkString(", ")}")
     }
   }
 
@@ -22,8 +22,6 @@ object StringCalculator {
     case CustomDelimiterRegex(x) => x
     case _ => ","
   }
-
-
 
 }
 
