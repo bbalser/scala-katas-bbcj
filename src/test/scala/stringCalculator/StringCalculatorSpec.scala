@@ -62,4 +62,8 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
   it should "allow multi character delimiter" in {
     add("//;;\n1;;2") should be (3)
   }
+
+  it should "allow multi character delimiter while still supporting newline as delimiter" in {
+    add("//;;\n1\n2;;3") should be (6)
+  }
 }
