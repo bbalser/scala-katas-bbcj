@@ -58,4 +58,8 @@ class StringCalculatorSpec extends FlatSpec with ShouldMatchers {
   it should "ignore numbers larger than 1000" in {
     add("2,1000,1001,1002")  should be (1002)
   }
+
+  it should "allow multi character delimiter" in {
+    add("//;;\n1;;2") should be (3)
+  }
 }
