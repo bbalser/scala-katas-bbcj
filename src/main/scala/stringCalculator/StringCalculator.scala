@@ -2,7 +2,7 @@ package stringCalculator
 
 object StringCalculator {
 
-  val CustomDelimiterRegex = "^//(.+)\n.+$".r
+  val CustomDelimiterRegex = "^//(.+)\n.\n*.*$".r
 
   def add(numbers: String): Int = {
 
