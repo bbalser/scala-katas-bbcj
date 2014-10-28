@@ -2,11 +2,11 @@ package stringCalculator
 
 object StringCalculator {
 
-  val CustomDelimiterRegex = "^//(.+)$".r
+  val CustomDelimiterRegex = "(?s)^//(.+?)\n.+$".r
 
   def add(numbers: String): Int = {
 
-    val delimiter = if (numbers.startsWith("//")) determineDelimiter((numbers.split("\n")(0))) else ","
+    val delimiter = determineDelimiter(numbers)
 
     val cleanedNumbers = "/".r.replaceAllIn(numbers, "")
     val numberList = cleanedNumbers.replace("\n", delimiter).split(delimiter).toList.collect { case x if !x.isEmpty => x.toInt}
@@ -19,7 +19,7 @@ object StringCalculator {
 
   def determineDelimiter(numbers: String): String = numbers match {
     case CustomDelimiterRegex(x) => x
-
+    case _ => ","
   }
 
 
