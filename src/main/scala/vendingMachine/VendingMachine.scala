@@ -5,7 +5,7 @@ class VendingMachine {
   var credit: Int = 0
 
   def getDisplay(): String = {
-    ""
+    "INSERT COIN"
   }
 
 
