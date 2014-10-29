@@ -1,5 +1,8 @@
 scala-katas-bbcj
 ================
+
+Vending Machine Kata - https://github.com/guyroyse/vending-machine-kata
+
 String Calculator Kata - http://osherove.com/tdd-kata-1/
 
 Roman Numeral Kata - arabic to roman numeral - http://codingdojo.org/cgi-bin/index.pl?KataRomanNumerals
