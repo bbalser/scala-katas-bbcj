@@ -2,7 +2,7 @@ package vendingMachine
 
 import org.scalatest.{FlatSpec, ShouldMatchers}
 import org.scalatest.BeforeAndAfter
-import vendingMachine.VendingMachine
+
 
 
 class VendingMachineSpec  extends FlatSpec with ShouldMatchers with BeforeAndAfter {
