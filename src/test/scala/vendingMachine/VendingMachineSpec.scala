@@ -3,8 +3,6 @@ package vendingMachine
 import org.scalatest.{FlatSpec, ShouldMatchers}
 import org.scalatest.BeforeAndAfter
 
-
-
 class VendingMachineSpec  extends FlatSpec with ShouldMatchers with BeforeAndAfter {
   var machine: VendingMachine = _
 
@@ -25,8 +23,5 @@ class VendingMachineSpec  extends FlatSpec with ShouldMatchers with BeforeAndAft
     machine.insert("DIME")
     machine.display should be ("0.10")
   }
-
-
-
 
 }

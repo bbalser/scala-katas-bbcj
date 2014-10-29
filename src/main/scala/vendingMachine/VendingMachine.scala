@@ -6,6 +6,7 @@ class VendingMachine {
 
   def display: String =  credit match{
     case "" => "INSERT COIN"
+    case "DIME" => "0.10"
     case _ =>  "0.05"
   }
 
