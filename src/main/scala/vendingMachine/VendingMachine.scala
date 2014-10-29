@@ -2,9 +2,8 @@ package vendingMachine
 
 
 class VendingMachine {
-  var credit: Int = 0
 
-  def getDisplay(): String = {
+  def display: String = {
     "INSERT COIN"
   }
 

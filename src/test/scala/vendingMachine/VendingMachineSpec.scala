@@ -14,7 +14,7 @@ class VendingMachineSpec  extends FlatSpec with ShouldMatchers with BeforeAndAft
 
   "When getting vending machine display, it" should "return 'INSERT COIN' when credit is 0" in {
 
-    machine.getDisplay() should be ("INSERT COIN")
+    machine.display should be ("INSERT COIN")
 
   }
 
