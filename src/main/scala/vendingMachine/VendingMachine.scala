@@ -7,6 +7,8 @@ class VendingMachine {
     "INSERT COIN"
   }
 
+  def insert(coin: String) = ???
+
 
 
 }
