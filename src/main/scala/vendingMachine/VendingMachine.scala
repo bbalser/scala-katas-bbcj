@@ -22,9 +22,13 @@ class VendingMachine {
       case Some(x) => Some(x + value)
     }
   }
+
   def reject(coin: String) : Option[Double] = {
     coinReturn = coin :: coinReturn
     credit
+
   }
+
+  def returnCoins = ???
 
 }
