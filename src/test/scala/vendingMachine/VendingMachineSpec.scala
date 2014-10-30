@@ -35,4 +35,10 @@ class VendingMachineSpec  extends FlatSpec with ShouldMatchers with BeforeAndAft
     machine.display should be ("0.10")
   }
 
+  it should "show 0.20 after inserting two dimes" in {
+    machine.insert("DIME")
+    machine.insert("DIME")
+    machine.display should be ("0.20")
+  }
+
 }
