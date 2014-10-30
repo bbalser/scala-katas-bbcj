@@ -9,11 +9,16 @@ class VendingMachine {
     case "DIME" => "0.10"
     case "QUARTER" => "0.25"
     case "2 NICKELS" => "0.10"
+    case "2 DIMES" => "0.20"
     case _ =>  "0.05"
   }
 
-  def insert(coin: String) = {
-    credit = if (credit == "NICKEL") "2 NICKELS" else coin
+  def insert(coin: String) = coin match{
+    case "NICKEL" => credit = if (credit == "NICKEL") "2 NICKELS" else coin
+    case "DIME" => credit = if (credit == "DIME") "2 DIMES" else coin
+    case _ => credit = coin
+
+
   }
 
 }

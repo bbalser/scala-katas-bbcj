@@ -41,4 +41,10 @@ class VendingMachineSpec  extends FlatSpec with ShouldMatchers with BeforeAndAft
     machine.display should be ("0.20")
   }
 
+  it should "show 0.50 after inserting two quarters" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.display should be ("0.50")
+  }
+
 }
