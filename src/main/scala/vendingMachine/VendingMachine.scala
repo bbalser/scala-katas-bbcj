@@ -14,4 +14,6 @@ class VendingMachine {
     case "QUARTER" => 0.25
   }))
 
+  def coinReturn: List[String] = ???
+
 }
