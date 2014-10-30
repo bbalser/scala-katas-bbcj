@@ -54,4 +54,11 @@ class VendingMachineSpec  extends FlatSpec with ShouldMatchers with BeforeAndAft
     machine.display should be ("INSERT COIN")
   }
 
+  it should "return PENNY after PENNY is inserted but maintain credit" in {
+    machine.insert("PENNY")
+    machine.insert("DIME")
+    machine.coinReturn should be (List("PENNY"))
+    machine.display should be ("0.10")
+  }
+
 }
