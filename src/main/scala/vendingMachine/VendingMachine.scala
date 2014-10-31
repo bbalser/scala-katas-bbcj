@@ -14,7 +14,7 @@ class VendingMachine {
     case None => coinReturn = coinReturn :+ coin
   }
 
-  def returnCoins = ???
+  def returnCoins: Unit = credit = None
 
   private def addToCredit(value: Double): Option[Double] = {
     credit.map(_ + value) orElse Some(value)
