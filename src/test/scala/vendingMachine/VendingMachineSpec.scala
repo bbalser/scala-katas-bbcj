@@ -71,7 +71,4 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     machine.display should be ("PRICE: 1.00")
   }
 
-
-
-
 }
