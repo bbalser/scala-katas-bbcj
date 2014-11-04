@@ -10,7 +10,10 @@ class VendingMachine {
   var priceList = Map("COLA" -> 1.00, "CHIPS" -> 0.50, "CANDY" -> 0.65)
 
   def display: String = productSelected match {
-    case Some(x) => showPrice(x)
+    case Some(x) => {
+      productSelected = None
+      "PRICE: " + formatDecimal(priceList(x))
+    }
     case None => formatDecimal(credit).getOrElse("INSERT COIN")
   }
 
@@ -23,10 +26,6 @@ class VendingMachine {
     credit.map(_ + value) orElse Some(value)
   }
 
-  private def showPrice(product: String): String = {
-    productSelected = None
-    "PRICE: " + formatDecimal(priceList(product))
-  }
 
   private def formatDecimal(decimal: Option[Double]): Option[String] = decimal.map( formatDecimal )
 
