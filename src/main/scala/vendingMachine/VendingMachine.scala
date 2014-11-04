@@ -7,7 +7,7 @@ class VendingMachine {
   var credit: Option[Double] = None
   var coinReturn: List[String] = Nil
   var productSelected = ""
-  var priceList = Map("COLA" -> 1.00, "CHIPS" -> 0.50)
+  var priceList = Map("COLA" -> 1.00, "CHIPS" -> 0.50, "CANDY" -> 0.65)
 
   def display: String =  if (productSelected != "") "PRICE: " + formatDecimal(Option(priceList(productSelected))).get else formatDecimal(credit).getOrElse("INSERT COIN")
 
