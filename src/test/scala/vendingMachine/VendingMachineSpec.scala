@@ -81,10 +81,17 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     machine.display should be ("PRICE: 0.65")
   }
 
-  it should "show INSERT COINS when checking the display after the price has been shown and there are no coins inserted" in {
+  it should "show INSERT COIN when checking the display after the price has been shown and there are no coins inserted" in {
     machine.selectProduct("COLA")
     machine.display should be ("PRICE: 1.00")
-    machine.display should be ("INSERT COINS")
+    machine.display should be ("INSERT COIN")
+  }
+
+  it should "show THANK YOU when a product is selected and enough money has been inserted" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.selectProduct("CHIPS")
+    machine.display should be ("THANK YOU")
   }
 
 }
