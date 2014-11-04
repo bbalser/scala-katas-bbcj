@@ -13,7 +13,7 @@ class VendingMachine {
     case Some(x) => {
       productSelected = None
       val productCost = priceList(x)
-      if (credit.getOrElse(0.0) == productCost) {
+      if (credit.getOrElse(0.0) >= productCost) {
         "THANK YOU"
       } else {
         "PRICE: " + formatDecimal(productCost)
@@ -37,5 +37,7 @@ class VendingMachine {
   private def formatDecimal(decimal: Double): String = new DecimalFormat("0.00").format(decimal)
 
   def selectProduct(value: String) = productSelected = Some(value)
+
+  def hopper: Option[String] = ???
 
 }

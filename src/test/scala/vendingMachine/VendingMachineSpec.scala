@@ -102,4 +102,9 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     machine.display should be ("THANK YOU")
   }
 
+  it should "contain 0 products in hopper when no items have been purchased" in {
+    machine.hopper should be (None)
+
+  }
+
 }
