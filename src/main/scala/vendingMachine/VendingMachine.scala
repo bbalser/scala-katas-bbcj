@@ -6,9 +6,10 @@ import java.text.DecimalFormat
 class VendingMachine {
   var credit: Option[Double] = None
   var coinReturn: List[String] = Nil
-  var productSelected = false
+  var productSelected = ""
+  var priceList = Map("COLA" -> 1.00, "CHIPS" -> 0.50)
 
-  def display: String =  if (productSelected) "PRICE: 1.00" else formatDecimal(credit).getOrElse("INSERT COIN")
+  def display: String =  if (productSelected != "") "PRICE: " + formatDecimal(Option(priceList(productSelected))).get else formatDecimal(credit).getOrElse("INSERT COIN")
 
   def insert(coin: String): Unit = Coin.decode(coin) match {
     case Some(x) => credit = addToCredit(x.value)
@@ -21,6 +22,6 @@ class VendingMachine {
 
   private def formatDecimal(decimal: Option[Double]) = decimal.map( new DecimalFormat("0.00").format )
 
-  def selectProduct(value: String) = productSelected = true
+  def selectProduct(value: String) = productSelected = value
 
 }

@@ -76,4 +76,9 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     machine.display should be ("PRICE: 0.50")
   }
 
+  it should "show PRICE: 0.65 when candy is selected" in {
+    machine.selectProduct("CANDY")
+    machine.display should be ("PRICE: 0.65")
+  }
+
 }
