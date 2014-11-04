@@ -12,7 +12,12 @@ class VendingMachine {
   def display: String = productSelected match {
     case Some(x) => {
       productSelected = None
-      "PRICE: " + formatDecimal(priceList(x))
+      val productCost = priceList(x)
+      if (credit.getOrElse(0.0) == productCost) {
+        "THANK YOU"
+      } else {
+        "PRICE: " + formatDecimal(productCost)
+      }
     }
     case None => formatDecimal(credit).getOrElse("INSERT COIN")
   }
