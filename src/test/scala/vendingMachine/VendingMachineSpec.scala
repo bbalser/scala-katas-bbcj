@@ -94,4 +94,12 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     machine.display should be ("THANK YOU")
   }
 
+  it should "show THANK YOU when a product is selected and more than enough money has been inserted" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.insert("DIME")
+    machine.selectProduct("CHIPS")
+    machine.display should be ("THANK YOU")
+  }
+
 }
