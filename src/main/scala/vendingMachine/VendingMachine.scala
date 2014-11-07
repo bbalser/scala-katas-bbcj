@@ -2,10 +2,11 @@ package vendingMachine
 
 import java.text.DecimalFormat
 
-class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen()) {
-  var credit: Double = 0
-  var coinReturn: List[String] = Nil
+class VendingMachine()(implicit val screen: DisplayScreen = new DisplayScreen(),
+                       implicit val coinReturn: CoinReturn = new CoinReturn()) {
 
+  var credit: Double = 0
+  
   screen.display("INSERT COIN")
 
   def insert(coin: String): Unit = Coin.decode(coin) match {
@@ -13,7 +14,7 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen()) {
       credit += x.value
       screen.display(formatDecimal(credit))
     }
-    case None => coinReturn = coinReturn :+ coin
+    case None => coinReturn.returnCoins(coin)
   }
 
   private def formatDecimal(decimal: Double): String = new DecimalFormat("0.00").format(decimal)

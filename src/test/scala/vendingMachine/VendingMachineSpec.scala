@@ -5,10 +5,12 @@ import org.scalatest.BeforeAndAfter
 
 class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfter {
   var machine: VendingMachine = _
-  implicit val screen = new TestDisplayScreen()
+  implicit var screen: TestDisplayScreen = _
+  implicit var coinReturn: TestCoinReturn = _
 
   before {
-    screen.clear
+    screen = new TestDisplayScreen()
+    coinReturn = new TestCoinReturn()
     machine = new VendingMachine()
   }
 
@@ -51,20 +53,20 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
 
   it should "return PENNY after PENNY is inserted" in {
     machine.insert("PENNY")
-    machine.coinReturn should be (List("PENNY"))
+    coinReturn.items should be (List("PENNY"))
     screen.items should be (List("INSERT COIN"))
   }
 
   it should "return PENNY after PENNY is inserted but maintain credit" in {
     machine.insert("DIME")
     machine.insert("PENNY")
-    machine.coinReturn should be (List("PENNY"))
+    coinReturn.items should be (List("PENNY"))
     screen.items should be (List("INSERT COIN", "0.10"))
   }
 
   it should "return HALF-DOLLAR after HALF-DOLLAR is inserted" in {
     machine.insert("HALF-DOLLAR")
-    machine.coinReturn should be (List("HALF-DOLLAR"))
+    coinReturn.items should be (List("HALF-DOLLAR"))
   }
 
   it should "show PRICE: 1.00 when cola is selected" in {
@@ -113,6 +115,14 @@ class TestDisplayScreen extends DisplayScreen {
   var items: List[String] = Nil
 
   override def display(content: String): Unit = items = items :+ content
+
+  def clear = items = Nil
+}
+
+class TestCoinReturn extends CoinReturn {
+  var items: List[String] = Nil
+
+  override def returnCoins(coin: String): Unit = items = items :+ coin
 
   def clear = items = Nil
 }
