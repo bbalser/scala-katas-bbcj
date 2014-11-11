@@ -7,10 +7,12 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
   var machine: VendingMachine = _
   implicit var screen: TestDisplayScreen = _
   implicit var coinReturn: TestCoinReturn = _
+  implicit var hopper: TestHopper = _
 
   before {
     screen = new TestDisplayScreen()
     coinReturn = new TestCoinReturn()
+    hopper = new TestHopper()
     machine = new VendingMachine()
   }
 
@@ -104,10 +106,18 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     screen.items should be (List("INSERT COIN", "0.25", "0.50", "0.60", "THANK YOU"))
   }
 
-//  it should "contain 0 products in hopper when no items have been purchased" in {
-//    machine.hopper should be (None)
-//
-//  }
+  it should "contain 0 products in hopper when no items have been purchased" in {
+    hopper.items should be (List())
+
+  }
+
+  it should "contain selected product in hopper when item has been purchased" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.selectProduct("CHIPS")
+    hopper.items should be (List("CHIPS"))
+
+  }
 
 }
 
@@ -123,6 +133,14 @@ class TestCoinReturn extends CoinReturn {
   var items: List[String] = Nil
 
   override def returnCoins(coin: String): Unit = items = items :+ coin
+
+  def clear = items = Nil
+}
+
+class TestHopper extends Hopper {
+  var items: List[String] = Nil
+
+  override def add(content: String): Unit = items = items :+ content
 
   def clear = items = Nil
 }

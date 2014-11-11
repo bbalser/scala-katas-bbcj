@@ -3,7 +3,8 @@ package vendingMachine
 import java.text.DecimalFormat
 
 class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
-                                coinReturn: CoinReturn = new CoinReturn()) {
+                                coinReturn: CoinReturn = new CoinReturn(),
+                                hopper: Hopper = new Hopper()) {
 
   var credit: Double = 0
 
@@ -20,12 +21,20 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
   private def formatDecimal(decimal: Double): String = new DecimalFormat("0.00").format(decimal)
 
   def selectProduct(value: String) = {
+    var output = ""
     val price = VendingMachine.priceList(value)
-    val output = if (credit >= price) "THANK YOU" else s"PRICE: ${formatDecimal(price)}"
-    screen.display(output)
-  }
 
-  def hopper: Option[String] = ???
+    if (credit >= price){
+      hopper.add(value)
+      output =  "THANK YOU"
+    }else{
+      output = s"PRICE: ${formatDecimal(price)}"
+    }
+
+    screen.display(output)
+
+
+  }
 
 }
 
