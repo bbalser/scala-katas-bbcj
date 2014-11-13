@@ -114,6 +114,15 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
 
   }
 
+  it should "return change when product cost less then credit" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.selectProduct("CHIPS")
+    coinReturn.items should be (List("QUARTER"))
+
+  }
+
 }
 
 class TestDisplayScreen extends DisplayScreen {
