@@ -31,9 +31,8 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
       output = s"PRICE: ${formatDecimal(price)}"
     }
 
+    coinReturn.returnCoins("QUARTER")
     screen.display(output)
-
-
   }
 
 }

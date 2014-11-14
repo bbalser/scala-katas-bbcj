@@ -120,7 +120,6 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     machine.insert("QUARTER")
     machine.selectProduct("CHIPS")
     coinReturn.items should be (List("QUARTER"))
-
   }
 
 }
