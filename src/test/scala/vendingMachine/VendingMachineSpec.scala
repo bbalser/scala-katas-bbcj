@@ -114,12 +114,20 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
 
   }
 
-  it should "return change when product cost less then credit" in {
+  it should "return QUARTER when product is QUARTER less than deposited amount" in {
     machine.insert("QUARTER")
     machine.insert("QUARTER")
     machine.insert("QUARTER")
     machine.selectProduct("CHIPS")
     coinReturn.items should be (List("QUARTER"))
+  }
+
+  it should "return correct DIME when product is DIME less than deposited amount" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.insert("DIME")
+    machine.selectProduct("CHIPS")
+    coinReturn.items should be (List("DIME"))
   }
 
 }
