@@ -130,6 +130,15 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     coinReturn.items should be (List("DIME"))
   }
 
+  it should "return DIME,NICKEL when product is .15 less than deposited amount" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.insert("NICKEL")
+    machine.selectProduct("CANDY")
+    coinReturn.items should be (List("DIME,NICKEL"))
+  }
+
 }
 
 class TestDisplayScreen extends DisplayScreen {
