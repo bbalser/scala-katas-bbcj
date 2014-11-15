@@ -35,11 +35,10 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
   }
 
   def makeChange(price: Double) = {
-    val coin = Coin.decodeValue(formatDecimal(credit - price))
-    if(coin != None){
-      coinReturn.returnCoins(coin.get.name)
+      Coin.decodeValue(formatDecimal(credit - price)) match {
+        case Some(x) =>  coinReturn.returnCoins(x.name)
+        case None => ""
     }
-
   }
 
 }
