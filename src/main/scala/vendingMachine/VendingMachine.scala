@@ -10,7 +10,7 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
 
   screen.display("INSERT COIN")
 
-  def insert(coin: String): Unit = Coin.decode(coin) match {
+  def insert(coin: String): Unit = Coin.decodeName(coin) match {
     case Some(x) => {
       credit += x.value
       screen.display(formatDecimal(credit))
@@ -30,9 +30,16 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
     }else{
       output = s"PRICE: ${formatDecimal(price)}"
     }
-
-    coinReturn.returnCoins("QUARTER")
+    makeChange(price)
     screen.display(output)
+  }
+
+  def makeChange(price: Double) = {
+    val coin = Coin.decodeValue(formatDecimal(credit - price))
+    if(coin != None){
+      coinReturn.returnCoins(coin.get.name)
+    }
+
   }
 
 }
