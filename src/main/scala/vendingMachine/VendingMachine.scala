@@ -13,12 +13,12 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
   def insert(coin: String): Unit = Coin.decodeName(coin) match {
     case Some(x) => {
       credit += x.value
-      screen.display(formatDecimal(credit))
+      screen.display(VendingMachine.formatDecimal(credit))
     }
     case None => coinReturn.returnCoins(coin)
   }
 
-  private def formatDecimal(decimal: Double): String = new DecimalFormat("0.00").format(decimal)
+
 
   def selectProduct(value: String) = {
     var output = ""
@@ -28,14 +28,14 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
       hopper.add(value)
       output =  "THANK YOU"
     }else{
-      output = s"PRICE: ${formatDecimal(price)}"
+      output = s"PRICE: ${VendingMachine.formatDecimal(price)}"
     }
     makeChange(price)
     screen.display(output)
   }
 
   def makeChange(price: Double) = {
-      Coin.decodeValue(formatDecimal(credit - price)) match {
+      Coin.decodeValue(VendingMachine.formatDecimal(credit - price)) match {
         case Some(x) =>  coinReturn.returnCoins(x.name)
         case None => ""
     }
@@ -45,4 +45,6 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
 
 object VendingMachine {
   val priceList = Map("COLA" -> 1.00, "CHIPS" -> 0.50, "CANDY" -> 0.65)
+  def formatDecimal(decimal: Double): String = new DecimalFormat("0.00").format(decimal)
+
 }
