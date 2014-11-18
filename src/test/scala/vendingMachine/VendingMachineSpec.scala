@@ -139,6 +139,14 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     coinReturn.items should be (List("DIME,NICKEL"))
   }
 
+  it should "return any coins inserted when return coins is pressed" in {
+    machine.insert("DIME")
+    machine.insert("NICKEL")
+    machine.returnCoins
+    coinReturn.items should be (List("DIME,NICKEL"))
+    screen.items should be (List("INSERT COIN", "0.10", "0.15", "INSERT COIN"))
+  }
+
 }
 
 class TestDisplayScreen extends DisplayScreen {

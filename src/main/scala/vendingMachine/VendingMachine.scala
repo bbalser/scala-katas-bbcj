@@ -37,7 +37,9 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
     screen.display(output)
   }
 
-  def makeChange(price: Double) = {
+  def returnCoins = ???
+
+  private def makeChange(price: Double) = {
 
     @tailrec def determineNextCoin(remaining: Double, change: List[Coin]): List[Coin] = {
       List(QUARTER, DIME, NICKEL).find { x => remaining >= x.value } match {
@@ -51,6 +53,8 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
       coinReturn.returnCoins(change.map(_.name).mkString(","))
     }
   }
+
+
 
 }
 
