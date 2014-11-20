@@ -37,7 +37,12 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
     screen.display(output)
   }
 
-  def returnCoins = ???
+  def returnCoins = {
+    coinReturn.returnCoins("DIME,NICKEL")
+    screen.display("INSERT COIN")
+
+  }
+
 
   private def makeChange(price: Double) = {
 
