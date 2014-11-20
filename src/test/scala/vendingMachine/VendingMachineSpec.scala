@@ -147,6 +147,20 @@ class VendingMachineSpec extends FlatSpec with ShouldMatchers with BeforeAndAfte
     screen.items should be (List("INSERT COIN", "0.10", "0.15", "INSERT COIN"))
   }
 
+  it should "show SOLD OUT when product is selected and it is out of stock" in {
+    machine.insert("QUARTER")
+    machine.insert("QUARTER")
+    machine.chipsCnt = 0
+    machine.selectProduct("CHIPS")
+
+
+    screen.items should be (List("INSERT COIN", "0.25", "0.25", "SOLD OUT"))
+  }
+
+
+
+
+
 }
 
 class TestDisplayScreen extends DisplayScreen {

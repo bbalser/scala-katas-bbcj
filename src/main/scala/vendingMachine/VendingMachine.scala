@@ -11,6 +11,8 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
                        hopper: Hopper = new Hopper()) {
 
   var cents: Int = 0
+  var chipsCnt: Int = 0
+
 
   screen.display("INSERT COIN")
 
@@ -65,6 +67,7 @@ class VendingMachine()(implicit screen: DisplayScreen = new DisplayScreen(),
 
 object VendingMachine {
   val priceList = Map("COLA" -> 100, "CHIPS" -> 50, "CANDY" -> 65)
+
 
   def formatCents(cents: Int): String = new DecimalFormat("0.00").format(cents / 100.0)
 
